@@ -1,5 +1,5 @@
 // Definir la fecha objetivo: 21 de agosto a las 7:00 PM (19:00 hrs)
-const targetDate = new Date("August 21, 2026 17:14:00").getTime();
+const targetDate = new Date("August 21, 2026 19:00:00").getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
