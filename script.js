@@ -1,5 +1,5 @@
-// Definir la fecha objetivo: 21 de agosto a las 6:00 PM (18:00 hrs)
-const targetDate = new Date("August 21, 2026 18:00:00").getTime();
+// Definir la fecha objetivo: 21 de agosto a las 7:00 PM (19:00 hrs)
+const targetDate = new Date("August 21, 2026 19:00:00").getTime();
 
 function updateCountdown() {
   const now = new Date().getTime();
@@ -9,16 +9,31 @@ function updateCountdown() {
   const countdownSection = document.querySelector(".countdown-container");
   const eventMessage = document.getElementById("event-message");
   const headerTitle = document.querySelector(".header h1");
-  const headerSubtitle = document.querySelector(".header .subtitle");
+  const headerSubtitles = document.querySelectorAll(".header .subtitle");
+  const socialFooter = document.querySelector(".social-footer");
 
   if (difference <= 0) {
-
+    // Ocultar contador
     if (countdownSection) countdownSection.style.display = "none";
 
+    // Actualizar encabezado 
     if (headerTitle) headerTitle.textContent = "¡Bienvenida energía solar!";
-    if (headerSubtitle) headerSubtitle.textContent = "#EcoSolar";
+    headerSubtitles.forEach(sub => sub.style.display = "none");
 
-    if (eventMessage) eventMessage.style.display = "block";
+    // Ocultar redes sociales originales
+    if (socialFooter) socialFooter.style.display = "none";
+
+    if (eventMessage) {
+      eventMessage.innerHTML = `
+        <h2>¡Conoce a detalle el nuevo poder de nuestra escuela!</h2>
+        <p style="margin-bottom: 1.25rem;">Síguenos para no perderte ninguna novedad:</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/eco.santaana/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.facebook.com/ecosantaanasv" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      `;
+      eventMessage.style.display = "block";
+    }
 
     return;
   }
